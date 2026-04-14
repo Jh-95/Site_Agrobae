@@ -657,3 +657,39 @@ p {
 	}
 
 }
+
+@media (max-width: 1024px) {
+	body {
+		background-attachment: scroll;
+	}
+}
+
+@media (max-width: 640px) {
+	.topbar {
+		padding: 10px 14px;
+	}
+
+	.brand-main {
+		font-size: 18px;
+	}
+
+	.brand-sub {
+		font-size: 10px;
+	}
+
+	.hero,
+	.section {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.hero__logo {
+		width: min(86vw, 420px);
+	}
+
+	.contact__form,
+	.activity-card,
+	.timeline__item {
+		padding: 14px;
+	}
+}

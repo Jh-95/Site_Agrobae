@@ -1,6 +1,4 @@
-// Controle do menu mobile e rolagem suave na página de carreiras
-const toggle = document.querySelector('.nav-toggle');
-const nav = document.querySelector('.nav');
+// Controle da página Trabalhe Conosco com React + fallback vanilla
 const jobsData = {
 	'operador-colhedora': {
 		title: 'Operador de Colhedora',
@@ -100,23 +98,6 @@ const jobsData = {
 	}
 };
 
-const jobCards = document.querySelectorAll('.job-card[data-job-id]');
-const jobApplyTriggers = document.querySelectorAll('.job-card .job-apply');
-const jobModal = document.getElementById('job-modal');
-const closeModalControls = document.querySelectorAll('[data-close-modal]');
-const jobModalTitle = document.getElementById('job-modal-title');
-const jobModalLocation = document.getElementById('job-modal-location');
-const jobModalModel = document.getElementById('job-modal-model');
-const jobModalSummary = document.getElementById('job-modal-summary');
-const jobModalMeta = document.getElementById('job-modal-meta');
-const jobModalResponsibilities = document.getElementById('job-modal-responsibilities');
-const jobModalRequirements = document.getElementById('job-modal-requirements');
-const jobModalBenefits = document.getElementById('job-modal-benefits');
-const jobModalApply = document.getElementById('job-modal-apply');
-const applySelect = document.querySelector('select[name="vaga"]');
-
-let lastFocusedCard = null;
-
 function fillList(listElement, items) {
 	if (!listElement) {
 		return;
@@ -130,117 +111,312 @@ function fillList(listElement, items) {
 	});
 }
 
-function syncFormVacancy(title) {
-	if (!applySelect) {
-		return;
-	}
+function initTrabalheVanilla() {
+	const toggle = document.querySelector('.nav-toggle');
+	const nav = document.querySelector('.nav');
+	const jobCards = document.querySelectorAll('.job-card[data-job-id]');
+	const jobApplyTriggers = document.querySelectorAll('.job-card .job-apply');
+	const jobModal = document.getElementById('job-modal');
+	const closeModalControls = document.querySelectorAll('[data-close-modal]');
+	const jobModalTitle = document.getElementById('job-modal-title');
+	const jobModalLocation = document.getElementById('job-modal-location');
+	const jobModalModel = document.getElementById('job-modal-model');
+	const jobModalSummary = document.getElementById('job-modal-summary');
+	const jobModalMeta = document.getElementById('job-modal-meta');
+	const jobModalResponsibilities = document.getElementById('job-modal-responsibilities');
+	const jobModalRequirements = document.getElementById('job-modal-requirements');
+	const jobModalBenefits = document.getElementById('job-modal-benefits');
+	const jobModalApply = document.getElementById('job-modal-apply');
+	const applySelect = document.querySelector('select[name="vaga"]');
+	const ctaLinks = document.querySelectorAll('a[href^="#"]');
+	let lastFocusedCard = null;
 
-	const option = Array.from(applySelect.options).find((item) => item.textContent.trim() === title);
-	if (option) {
-		applySelect.value = option.value || option.textContent;
-	}
-}
-
-function openJobModal(jobId, card) {
-	const job = jobsData[jobId];
-	if (!job || !jobModal) {
-		return;
-	}
-
-	jobModalTitle.textContent = job.title;
-	jobModalLocation.textContent = job.location;
-	jobModalModel.textContent = job.model;
-	jobModalSummary.textContent = job.summary;
-	jobModalMeta.textContent = job.meta;
-	fillList(jobModalResponsibilities, job.responsibilities);
-	fillList(jobModalRequirements, job.requirements);
-	fillList(jobModalBenefits, job.benefits);
-	syncFormVacancy(job.title);
-
-	jobModal.classList.add('open');
-	jobModal.setAttribute('aria-hidden', 'false');
-	document.body.classList.add('modal-open');
-	lastFocusedCard = card;
-}
-
-function closeJobModal() {
-	if (!jobModal || !jobModal.classList.contains('open')) {
-		return;
-	}
-
-	jobModal.classList.remove('open');
-	jobModal.setAttribute('aria-hidden', 'true');
-	document.body.classList.remove('modal-open');
-	lastFocusedCard?.focus();
-}
-
-jobCards.forEach((card) => {
-	card.addEventListener('click', (event) => {
-		event.preventDefault();
-		openJobModal(card.dataset.jobId, card);
-	});
-
-	card.addEventListener('keydown', (event) => {
-		if (event.key === 'Enter' || event.key === ' ') {
-			event.preventDefault();
-			openJobModal(card.dataset.jobId, card);
-		}
-	});
-});
-
-jobApplyTriggers.forEach((link) => {
-	link.addEventListener('click', (event) => {
-		event.preventDefault();
-		event.stopPropagation();
-		const card = link.closest('.job-card');
-		if (card) {
-			openJobModal(card.dataset.jobId, card);
-		}
-	});
-});
-
-closeModalControls.forEach((control) => {
-	control.addEventListener('click', closeJobModal);
-});
-
-if (jobModalApply) {
-	jobModalApply.addEventListener('click', () => {
-		closeJobModal();
-	});
-}
-
-document.addEventListener('keydown', (event) => {
-	if (event.key === 'Escape') {
-		closeJobModal();
-	}
-});
-
-if (toggle && nav) {
-	toggle.addEventListener('click', () => {
-		const isOpen = nav.classList.toggle('open');
-		toggle.setAttribute('aria-expanded', String(isOpen));
-	});
-}
-
-const ctaLinks = document.querySelectorAll('a[href^="#"]');
-ctaLinks.forEach((link) => {
-	// Scroll suave para as âncoras de vagas/formulário e fechamento do menu
-	link.addEventListener('click', (event) => {
-		if (event.defaultPrevented) {
+	function syncFormVacancy(title) {
+		if (!applySelect) {
 			return;
 		}
 
-		const targetId = link.getAttribute('href');
-		const target = document.querySelector(targetId);
+		const option = Array.from(applySelect.options).find((item) => item.textContent.trim() === title);
+		if (option) {
+			applySelect.value = option.value || option.textContent;
+		}
+	}
 
-		if (target) {
-			event.preventDefault();
-			target.scrollIntoView({ behavior: 'smooth' });
+	function openJobModal(jobId, card) {
+		const job = jobsData[jobId];
+		if (!job || !jobModal) {
+			return;
 		}
 
-		if (nav && nav.classList.contains('open')) {
-			nav.classList.remove('open');
-			toggle?.setAttribute('aria-expanded', 'false');
+		jobModalTitle.textContent = job.title;
+		jobModalLocation.textContent = job.location;
+		jobModalModel.textContent = job.model;
+		jobModalSummary.textContent = job.summary;
+		jobModalMeta.textContent = job.meta;
+		fillList(jobModalResponsibilities, job.responsibilities);
+		fillList(jobModalRequirements, job.requirements);
+		fillList(jobModalBenefits, job.benefits);
+		syncFormVacancy(job.title);
+
+		jobModal.classList.add('open');
+		jobModal.setAttribute('aria-hidden', 'false');
+		document.body.classList.add('modal-open');
+		lastFocusedCard = card;
+	}
+
+	function closeJobModal() {
+		if (!jobModal || !jobModal.classList.contains('open')) {
+			return;
+		}
+
+		jobModal.classList.remove('open');
+		jobModal.setAttribute('aria-hidden', 'true');
+		document.body.classList.remove('modal-open');
+		lastFocusedCard?.focus();
+	}
+
+	jobCards.forEach((card) => {
+		card.addEventListener('click', (event) => {
+			event.preventDefault();
+			openJobModal(card.dataset.jobId, card);
+		});
+
+		card.addEventListener('keydown', (event) => {
+			if (event.key === 'Enter' || event.key === ' ') {
+				event.preventDefault();
+				openJobModal(card.dataset.jobId, card);
+			}
+		});
+	});
+
+	jobApplyTriggers.forEach((link) => {
+		link.addEventListener('click', (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			const card = link.closest('.job-card');
+			if (card) {
+				openJobModal(card.dataset.jobId, card);
+			}
+		});
+	});
+
+	closeModalControls.forEach((control) => control.addEventListener('click', closeJobModal));
+
+	if (jobModalApply) {
+		jobModalApply.addEventListener('click', () => closeJobModal());
+	}
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape') {
+			closeJobModal();
 		}
 	});
-});
+
+	if (toggle && nav) {
+		toggle.addEventListener('click', () => {
+			const isOpen = nav.classList.toggle('open');
+			toggle.setAttribute('aria-expanded', String(isOpen));
+		});
+	}
+
+	ctaLinks.forEach((link) => {
+		link.addEventListener('click', (event) => {
+			if (event.defaultPrevented) {
+				return;
+			}
+
+			const targetId = link.getAttribute('href');
+			const target = targetId ? document.querySelector(targetId) : null;
+
+			if (target) {
+				event.preventDefault();
+				target.scrollIntoView({ behavior: 'smooth' });
+			}
+
+			if (nav && nav.classList.contains('open')) {
+				nav.classList.remove('open');
+				toggle?.setAttribute('aria-expanded', 'false');
+			}
+		});
+	});
+}
+
+function initTrabalheReact() {
+	if (!window.React || !window.ReactDOM) {
+		initTrabalheVanilla();
+		return;
+	}
+
+	const React = window.React;
+	const { useEffect, useState } = React;
+	const toggle = document.querySelector('.nav-toggle');
+	const nav = document.querySelector('.nav');
+	const jobCards = Array.from(document.querySelectorAll('.job-card[data-job-id]'));
+	const jobApplyTriggers = Array.from(document.querySelectorAll('.job-card .job-apply'));
+	const jobModal = document.getElementById('job-modal');
+	const closeModalControls = Array.from(document.querySelectorAll('[data-close-modal]'));
+	const jobModalTitle = document.getElementById('job-modal-title');
+	const jobModalLocation = document.getElementById('job-modal-location');
+	const jobModalModel = document.getElementById('job-modal-model');
+	const jobModalSummary = document.getElementById('job-modal-summary');
+	const jobModalMeta = document.getElementById('job-modal-meta');
+	const jobModalResponsibilities = document.getElementById('job-modal-responsibilities');
+	const jobModalRequirements = document.getElementById('job-modal-requirements');
+	const jobModalBenefits = document.getElementById('job-modal-benefits');
+	const jobModalApply = document.getElementById('job-modal-apply');
+	const applySelect = document.querySelector('select[name="vaga"]');
+	const ctaLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
+
+	if (!toggle || !nav || !jobModal) {
+		return;
+	}
+
+	const rootElement = document.createElement('div');
+	rootElement.id = 'react-trabalhe-controller';
+	rootElement.style.display = 'none';
+	document.body.appendChild(rootElement);
+
+	function TrabalheController() {
+		const [isNavOpen, setIsNavOpen] = useState(false);
+		const [activeJobId, setActiveJobId] = useState(null);
+		const [lastCard, setLastCard] = useState(null);
+
+		useEffect(() => {
+			nav.classList.toggle('open', isNavOpen);
+			toggle.setAttribute('aria-expanded', String(isNavOpen));
+		}, [isNavOpen]);
+
+		useEffect(() => {
+			const job = activeJobId ? jobsData[activeJobId] : null;
+
+			if (!job) {
+				jobModal.classList.remove('open');
+				jobModal.setAttribute('aria-hidden', 'true');
+				document.body.classList.remove('modal-open');
+				if (lastCard) {
+					lastCard.focus();
+				}
+				return;
+			}
+
+			jobModalTitle.textContent = job.title;
+			jobModalLocation.textContent = job.location;
+			jobModalModel.textContent = job.model;
+			jobModalSummary.textContent = job.summary;
+			jobModalMeta.textContent = job.meta;
+			fillList(jobModalResponsibilities, job.responsibilities);
+			fillList(jobModalRequirements, job.requirements);
+			fillList(jobModalBenefits, job.benefits);
+
+			if (applySelect) {
+				const option = Array.from(applySelect.options).find((item) => item.textContent.trim() === job.title);
+				if (option) {
+					applySelect.value = option.value || option.textContent;
+				}
+			}
+
+			jobModal.classList.add('open');
+			jobModal.setAttribute('aria-hidden', 'false');
+			document.body.classList.add('modal-open');
+		}, [activeJobId, lastCard]);
+
+		useEffect(() => {
+			const onToggle = () => setIsNavOpen((prev) => !prev);
+			toggle.addEventListener('click', onToggle);
+
+			const cardCleanup = jobCards.flatMap((card) => {
+				const onClick = (event) => {
+					event.preventDefault();
+					setLastCard(card);
+					setActiveJobId(card.dataset.jobId || null);
+				};
+
+				const onKeyDown = (event) => {
+					if (event.key === 'Enter' || event.key === ' ') {
+						event.preventDefault();
+						setLastCard(card);
+						setActiveJobId(card.dataset.jobId || null);
+					}
+				};
+
+				card.addEventListener('click', onClick);
+				card.addEventListener('keydown', onKeyDown);
+				return [
+					() => card.removeEventListener('click', onClick),
+					() => card.removeEventListener('keydown', onKeyDown)
+				];
+			});
+
+			const applyCleanup = jobApplyTriggers.map((link) => {
+				const onApply = (event) => {
+					event.preventDefault();
+					event.stopPropagation();
+					const card = link.closest('.job-card');
+					if (card?.dataset.jobId) {
+						setLastCard(card);
+						setActiveJobId(card.dataset.jobId);
+					}
+				};
+
+				link.addEventListener('click', onApply);
+				return () => link.removeEventListener('click', onApply);
+			});
+
+			const closeCleanup = closeModalControls.map((control) => {
+				const onClose = () => setActiveJobId(null);
+				control.addEventListener('click', onClose);
+				return () => control.removeEventListener('click', onClose);
+			});
+
+			const onEscape = (event) => {
+				if (event.key === 'Escape') {
+					setActiveJobId(null);
+				}
+			};
+			document.addEventListener('keydown', onEscape);
+
+			const onApplyCta = () => setActiveJobId(null);
+			if (jobModalApply) {
+				jobModalApply.addEventListener('click', onApplyCta);
+			}
+
+			const anchorCleanup = ctaLinks.map((link) => {
+				const onAnchor = (event) => {
+					if (event.defaultPrevented) {
+						return;
+					}
+
+					const targetId = link.getAttribute('href');
+					const target = targetId ? document.querySelector(targetId) : null;
+					if (target) {
+						event.preventDefault();
+						target.scrollIntoView({ behavior: 'smooth' });
+					}
+
+					setIsNavOpen(false);
+				};
+
+				link.addEventListener('click', onAnchor);
+				return () => link.removeEventListener('click', onAnchor);
+			});
+
+			return () => {
+				toggle.removeEventListener('click', onToggle);
+				cardCleanup.forEach((cleanup) => cleanup());
+				applyCleanup.forEach((cleanup) => cleanup());
+				closeCleanup.forEach((cleanup) => cleanup());
+				anchorCleanup.forEach((cleanup) => cleanup());
+				document.removeEventListener('keydown', onEscape);
+				if (jobModalApply) {
+					jobModalApply.removeEventListener('click', onApplyCta);
+				}
+			};
+		}, []);
+
+		return null;
+	}
+
+	window.ReactDOM.createRoot(rootElement).render(React.createElement(TrabalheController));
+}
+
+initTrabalheReact();

@@ -356,3 +356,34 @@ p {
 		padding-top: 100px;
 	}
 }
+
+@media (max-width: 1024px) {
+	body {
+		background-attachment: scroll;
+	}
+}
+
+@media (max-width: 640px) {
+	.topbar {
+		padding: 10px 14px;
+	}
+
+	.brand-main {
+		font-size: 18px;
+	}
+
+	.brand-sub {
+		font-size: 10px;
+	}
+
+	.hero,
+	.section {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.card,
+	.stat {
+		padding: 14px;
+	}
+}
