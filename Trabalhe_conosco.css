@@ -20,6 +20,17 @@
 	box-sizing: border-box;
 }
 
+html,
+body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
 body {
 	margin: 0;
 	background: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url('img/background.png') center/cover fixed no-repeat;
@@ -470,6 +481,12 @@ body.modal-open {
 	gap: 18px;
 }
 
+.job-grid > *,
+.apply-grid > *,
+.job-modal__blocks > * {
+	min-width: 0;
+}
+
 .apply-form {
 	display: grid;
 	gap: 12px;
@@ -605,5 +622,11 @@ body.modal-open {
 	.card,
 	.job-modal__content {
 		padding: 14px;
+	}
+
+	.job-grid,
+	.apply-grid,
+	.job-modal__blocks {
+		grid-template-columns: 1fr;
 	}
 }

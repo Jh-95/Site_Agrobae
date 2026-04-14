@@ -20,6 +20,17 @@
 	box-sizing: border-box;
 }
 
+html,
+body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
 body {
 	margin: 0;
 	background: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url('img/background.png') center/cover fixed no-repeat;
@@ -213,6 +224,11 @@ p {
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+.grid > *,
+.stats > * {
+	min-width: 0;
+}
+
 /* Cartões de apoio e destaques */
 .card {
 	background: var(--white);
@@ -385,5 +401,11 @@ p {
 	.card,
 	.stat {
 		padding: 14px;
+	}
+
+	.grid.two,
+	.grid.three,
+	.stats {
+		grid-template-columns: 1fr;
 	}
 }

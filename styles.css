@@ -20,6 +20,17 @@
 	box-sizing: border-box;
 }
 
+html,
+body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
 /* Fundo principal com imagem fixa */
 body {
 	margin: 0;
@@ -158,9 +169,16 @@ p {
 .hero__grid {
 	width: 100%;
 	display: grid;
-	grid-template-columns: minmax(280px, 520px) 1fr;
+	grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
 	gap: 32px;
 	align-items: center;
+}
+
+.hero__grid > *,
+.timeline > *,
+.activity-grid > *,
+.contact > * {
+	min-width: 0;
 }
 
 .hero__visual {
@@ -691,5 +709,11 @@ p {
 	.activity-card,
 	.timeline__item {
 		padding: 14px;
+	}
+
+	.timeline,
+	.activity-grid,
+	.contact {
+		grid-template-columns: 1fr;
 	}
 }
