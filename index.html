@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>GRUPO BAEPENDI</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="preload" href="img/background.png" as="image" />
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<!-- Barra superior com marca e navegação principal -->
+	<header class="topbar">
+		<div class="brand brand-text" aria-label="Grupo Baependi">
+			<div class="brand-main">AGROBAE</div>
+			<div class="brand-bar" aria-hidden="true"></div>
+			<div class="brand-sub">BAEPENDI&nbsp;&nbsp;AGROPECUÁRIA</div>
+		</div>
+		<button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+			<img src="img/menu.JPG" alt="Menu" class="nav-icon" />
+		</button>
+		<nav class="nav" aria-label="Principal">
+			<ul>
+				<li><a href="#inicio">Início</a></li>
+				<li><a href="#atividades">Atividades</a></li>
+				<li><a href="sobre.html">Sobre</a></li>
+				<li><a href="#contato">Contato</a></li>
+				<li><a href="Trabalhe_conosco.html">Trabalhe Conosco</a></li>
+
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<!-- Sessão inicial com logo e CTAs -->
+		<section id="inicio" class="hero hero--logo">
+			<div class="hero__overlay">
+				<div class="hero__grid">
+					<div class="hero__visual">
+						<img src="img/logo.png" alt="Logomarca Agrobae" class="hero__logo" />
+						<div class="cta">
+							<a class="btn primary" href="#sobre">Conheça mais</a>
+							<a class="btn ghost" href="#contato">Fale conosco</a>
+						</div>
+					</div>
+					<div class="hero__text">
+						<h1>Baependi Agropecuária S/A</h1>
+						<p class="kicker">Fundada em 2004</p>
+						<p class="lead">Fundada neste ano, a Baependi Agropecuária S/A foi constituída com o objetivo de retomar áreas de arrendamento da Usina e explorar centralizadamente as atividades de agricultura e pecuária (cana, soja e cria, recria e engorda de bovinos) nas propriedades da família, inicialmente nos municípios de Orlândia e Morro Agudo/SP, reduzindo custos e otimizando as operações.</p>
+					</div>
+				</div>
+		</section>
+
+		<!-- Linha do tempo institucional -->
+		<section id="sobre" class="section">
+			<div class="section__heading">
+				<p class="kicker">Sobre nós</p>
+				<h2>Nossa trajetória</h2>
+				<p class="body">Principais marcos de expansão e mecanização da Baependi Agropecuária.</p>
+			</div>
+			<div class="timeline">
+				<div class="timeline__item">
+					<div class="timeline__dot" aria-hidden="true"></div>
+					<h3 class="timeline__year">2009</h3>
+					<p class="timeline__body">Concluiu a retomada das terras arrendadas, totalizando mais de 6 mil hectares para operacionalizar plantio, tratos culturais, colheita e transporte de cana até a esteira da Usina, época em que ainda utilizava corte de cana manual.</p>
+				</div>
+				<div class="timeline__item">
+					<div class="timeline__dot" aria-hidden="true"></div>
+					<h3 class="timeline__year">2012</h3>
+					<p class="timeline__body">A partir de 2012, praticamente 100% do corte de cana já era por colhedoras; a Baependi investiu em tecnologia e mecanização.</p>
+				</div>
+				<div class="timeline__item">
+					<div class="timeline__dot" aria-hidden="true"></div>
+					<h3 class="timeline__year">2015</h3>
+					<p class="timeline__body">Em 2015, expandiu suas atividades para propriedades da família no Estado de Goiás, no Município de Nova Crixás.</p>
+				</div>
+				<div class="timeline__item">
+					<div class="timeline__dot" aria-hidden="true"></div>
+					<h3 class="timeline__year">2021</h3>
+					<p class="timeline__body">Em 2021, criou a subsidiária Agrobae Ltda para segmentar a exploração de soja e pecuária, ampliando a área produtiva para cerca de 12 mil hectares, somando os três Estados (SP, GO e MT).</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Cards com as principais atividades do grupo -->
+		<section id="atividades" class="section section--accent">
+			<div class="section__heading">
+				<h2>Nossas atividades</h2>
+				<p class="body">Quatro frentes em destaque: gado, cana de açúcar, soja e feno, com foco em produção e manejo.</p>
+			</div>
+			<div class="activity-grid">
+				<article class="activity-card" style="--bg: url('img/gado.png');">
+					<div class="activity__overlay">
+						<span class="activity__order">1°</span>
+						<h3>Gado</h3>
+					</div>
+				</article>
+				<article class="activity-card" style="--bg: url('img/cana.jpg');">
+					<div class="activity__overlay">
+						<span class="activity__order">2°</span>
+						<h3>Cana de açúcar</h3>
+					</div>
+				</article>
+				<article class="activity-card" style="--bg: url('img/soja.jpg');">
+					<div class="activity__overlay">
+						<span class="activity__order">3°</span>
+						<h3>Soja</h3>
+					</div>
+				</article>
+				<article class="activity-card" style="--bg: url('img/feno.jpg');">
+					<div class="activity__overlay">
+						<span class="activity__order">4°</span>
+						<h3>Feno</h3>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<!-- Contatos e formulário de mensagem -->
+		<section id="contato" class="section section--alt">
+			<div class="section__heading">
+				<p class="kicker">Contato</p>
+				<h2>Fale com a Agrobae</h2>
+				<p class="body">Adicione os canais de contato oficiais do PDF (telefone, e-mail, endereço e redes sociais).</p>
+			</div>
+			<div class="contact">
+				<div class="contact__info">
+					<h3>Informações</h3>
+					<p>Telefone: (16) 3820-1900</p>
+					<p>E-mail: recepcao@agrobae.com.br</p>
+					<p>Endereço: Rodovia Altino Arantes, Km 96, Zona Rural, Orlândia - SP, CEP 14620-970</p>
+				</div>
+				<form class="contact__form">
+					<label>
+						Nome
+						<input type="text" name="nome" placeholder="Seu nome" required />
+					</label>
+					<label>
+						E-mail
+						<input type="email" name="email" placeholder="seu@email.com" required />
+					</label>
+					<label>
+						Mensagem
+						<textarea name="mensagem" rows="4" placeholder="Como podemos ajudar?" required></textarea>
+					</label>
+					<button type="submit" class="btn primary">Enviar</button>
+				</form>
+			</div>
+		</section>
+	</main>
+
+	<footer class="footer">
+		<p>© 2026 Agrobae/Dev. João Henrique ©</p>
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+</html>

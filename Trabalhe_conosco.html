@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Trabalhe Conosco | Baependi Agropecuária</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="Trabalhe_conosco.css" />
+</head>
+<body>
+	<!-- Cabeçalho com logo e navegação cruzada para outras páginas -->
+	<header class="topbar">
+		<div class="brand brand-text" aria-label="Grupo Baependi">
+			<div class="brand-main">AGROBAE</div>
+			<div class="brand-bar" aria-hidden="true"></div>
+			<div class="brand-sub">BAEPENDI&nbsp;&nbsp;AGROPECUÁRIA</div>
+		</div>
+		<button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+			<img src="img/menu.JPG" alt="Menu" class="nav-icon" />
+		</button>
+		<nav class="nav" aria-label="Principal">
+			<ul>
+				<li><a href="index.html#inicio">Início</a></li>
+				<li><a href="index.html#atividades">Atividades</a></li>
+				<li><a href="sobre.html">Sobre</a></li>
+				<li><a href="index.html#contato">Contato</a></li>
+				<li><a class="is-active" href="Trabalhe_conosco.html">Trabalhe Conosco</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<!-- Herói da página de carreiras com CTAs para vagas e formulário -->
+		<section class="hero">
+			<div class="hero__content">
+				<p class="kicker">Carreiras</p>
+				<h1>Trabalhe com a Baependi Agropecuária</h1>
+				<p class="lead">Faça parte de um time que valoriza pessoas, segurança e sustentabilidade em todas as operações.</p>
+				<div class="cta">
+					<a class="btn primary" href="#vagas">Ver vagas abertas</a>
+					<a class="btn ghost" href="#formulario">Enviar currículo</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Listagem simples de vagas abertas -->
+		<section id="vagas" class="section">
+			<div class="section__heading">
+				<p class="kicker">Vagas abertas</p>
+				<h2>Oportunidades na Baependi</h2>
+				<p class="body">Encontre a função que combina com você e envie seu currículo.</p>
+			</div>
+			<div class="job-grid">
+				<article class="job-card" data-job-id="operador-colhedora" tabindex="0" role="button" aria-label="Ver detalhes da vaga Operador de Colhedora">
+					<div class="job-card__top">
+						<h3>Operador de Colhedora</h3>
+						<div class="job-tags">
+							<span class="tag">Orlândia - SP</span>
+							<span class="tag tag--outline">Presencial</span>
+						</div>
+					</div>
+					<p class="job-desc">Conduzir colhedora de cana com foco em segurança, produtividade e cuidado com o maquinário.</p>
+					<p class="job-meta">Turno: Integral • Exige experiência prévia</p>
+					<a class="job-apply" href="#formulario">Quero me candidatar</a>
+				</article>
+
+				<article class="job-card" data-job-id="tecnico-seguranca" tabindex="0" role="button" aria-label="Ver detalhes da vaga Técnico de Segurança do Trabalho">
+					<div class="job-card__top">
+						<h3>Técnico de Segurança do Trabalho</h3>
+						<div class="job-tags">
+							<span class="tag">Morro Agudo - SP</span>
+							<span class="tag tag--outline">Presencial</span>
+						</div>
+					</div>
+					<p class="job-desc">Treinar equipes, garantir uso correto de EPIs e fiscalizar práticas seguras em campo.</p>
+					<p class="job-meta">Turno: Integral • NR vigentes</p>
+					<a class="job-apply" href="#formulario">Quero me candidatar</a>
+				</article>
+
+				<article class="job-card" data-job-id="auxiliar-administrativo" tabindex="0" role="button" aria-label="Ver detalhes da vaga Auxiliar Administrativo">
+					<div class="job-card__top">
+						<h3>Auxiliar Administrativo</h3>
+						<div class="job-tags">
+							<span class="tag">Orlândia - SP</span>
+							<span class="tag tag--outline">Híbrido</span>
+						</div>
+					</div>
+					<p class="job-desc">Suporte a rotinas administrativas, lançamentos, controles de documentos e atendimento interno.</p>
+					<p class="job-meta">Turno: Comercial • Pacote Office</p>
+					<a class="job-apply" href="#formulario">Quero me candidatar</a>
+				</article>
+
+				<article class="job-card" data-job-id="analista-agricola" tabindex="0" role="button" aria-label="Ver detalhes da vaga Analista Agrícola">
+					<div class="job-card__top">
+						<h3>Analista Agrícola</h3>
+						<div class="job-tags">
+							<span class="tag">Nova Crixás - GO</span>
+							<span class="tag tag--outline">Presencial</span>
+						</div>
+					</div>
+					<p class="job-desc">Planejar e acompanhar tratos culturais, insumos e indicadores de produtividade.</p>
+					<p class="job-meta">Turno: Integral • Experiência em soja/cana</p>
+					<a class="job-apply" href="#formulario">Quero me candidatar</a>
+				</article>
+			</div>
+		</section>
+
+		<!-- Formulário de candidatura e dicas rápidas -->
+		<section id="formulario" class="section section--alt">
+			<div class="section__heading">
+				<p class="kicker">Envie seu currículo</p>
+				<h2>Cadastre-se nas vagas</h2>
+				<p class="body">Preencha seus dados, escolha a vaga de interesse e anexe seu currículo (PDF).</p>
+			</div>
+			<div class="apply-grid">
+				<form class="apply-form">
+					<label>Nome completo
+						<input type="text" name="nome" placeholder="Seu nome" required />
+					</label>
+					<label>E-mail
+						<input type="email" name="email" placeholder="seu@email.com" required />
+					</label>
+					<label>Telefone
+						<input type="tel" name="telefone" placeholder="(00) 00000-0000" required />
+					</label>
+					<label>Vaga de interesse
+						<select name="vaga" required>
+							<option value="">Selecione uma vaga</option>
+							<option>Operador de Colhedora</option>
+							<option>Técnico de Segurança do Trabalho</option>
+							<option>Auxiliar Administrativo</option>
+							<option>Analista Agrícola</option>
+							<option>Banco de Talentos</option>
+						</select>
+					</label>
+					<label>Mensagem (opcional)
+						<textarea name="mensagem" rows="4" placeholder="Conte sobre sua experiência"></textarea>
+					</label>
+					<label class="file-label">Currículo (PDF)
+						<input type="file" name="curriculo" accept="application/pdf" />
+					</label>
+					<button type="submit" class="btn primary">Enviar candidatura</button>
+				</form>
+				<div class="card card--accent apply-info">
+					<h3>Dicas rápidas</h3>
+					<ul>
+						<li>Envie em PDF e mantenha os dados atualizados.</li>
+						<li>Informe a vaga desejada para agilizar o contato.</li>
+						<li>Descreva experiência em máquinas, segurança ou rotinas administrativas.</li>
+						<li>Retorno é feito pelo e-mail informado no formulário.</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- Sub tela de detalhes da vaga -->
+		<div class="job-modal" id="job-modal" aria-hidden="true">
+			<div class="job-modal__overlay" data-close-modal></div>
+			<section class="job-modal__content" role="dialog" aria-modal="true" aria-labelledby="job-modal-title">
+				<button type="button" class="job-modal__close" data-close-modal aria-label="Fechar detalhes da vaga">×</button>
+				<p class="kicker" id="job-modal-kicker">Detalhes da vaga</p>
+				<h3 id="job-modal-title"></h3>
+				<div class="job-modal__tags">
+					<span class="tag" id="job-modal-location"></span>
+					<span class="tag tag--outline" id="job-modal-model"></span>
+				</div>
+				<p class="job-modal__summary" id="job-modal-summary"></p>
+				<p class="job-meta" id="job-modal-meta"></p>
+				<div class="job-modal__blocks">
+					<div class="job-modal__block">
+						<h4>Responsabilidades</h4>
+						<ul id="job-modal-responsibilities"></ul>
+					</div>
+					<div class="job-modal__block">
+						<h4>Requisitos</h4>
+						<ul id="job-modal-requirements"></ul>
+					</div>
+					<div class="job-modal__block">
+						<h4>Diferenciais</h4>
+						<ul id="job-modal-benefits"></ul>
+					</div>
+				</div>
+				<a class="btn primary job-modal__apply" id="job-modal-apply" href="#formulario">Quero me candidatar</a>
+			</section>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<p>© 2026 Agrobae/Dev. João Henrique ©</p>
+	</footer>
+
+	<script src="Trabalhe_conosco.js"></script>
+</body>
+</html>
