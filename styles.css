@@ -168,6 +168,10 @@ p {
 	display: none;
 }
 
+.nav-toggle img {
+	display: none !important;
+}
+
 /* Sessão hero da home */
 .hero {
 	position: relative;
